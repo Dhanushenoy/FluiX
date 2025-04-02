@@ -5,7 +5,7 @@ description = "Python Post-Processing Toolkit for Scientific Visualization"
 authors = [{ name = "dhanushenoy", email = "dhanushenoy@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["imageio"]  # ← fix: closing quote was missing
+dependencies = ["imageio[ffmpeg]"]
 
 [project.scripts]
 fluix = "fluix.cli:main"
