@@ -1,0 +1,9 @@
+# Packaging leftovers
+*.egg-info/
+dist/
+build/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.cache/

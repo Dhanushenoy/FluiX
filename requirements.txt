@@ -1,0 +1,6 @@
+# Core dependencies
+imageio
+
+# Optional
+matplotlib
+numpy

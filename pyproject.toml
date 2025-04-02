@@ -1,0 +1,15 @@
+[project]
+name = "fluix"
+version = "0.1.0"
+description = "Python Post-Processing Toolkit for Scientific Visualization"
+authors = [{ name = "dhanushenoy", email = "dhanushenoy@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["imageio"]  # ← fix: closing quote was missing
+
+[project.scripts]
+pyfx = "fluix.cli:main"
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
