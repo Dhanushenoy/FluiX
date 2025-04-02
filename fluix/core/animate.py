@@ -1,4 +1,4 @@
-# pyfx/animate.py
+# fluix/animate.py
 
 import os
 import imageio.v2 as imageio
@@ -41,4 +41,4 @@ def images_to_video(
             writer.append_data(image)
         writer.close()
 
-    print(f"[pyFX] Saved animation to {output_path}")
+    print(f"[FluiX] Saved animation to {output_path}")

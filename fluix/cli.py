@@ -3,7 +3,7 @@ from fluix.cmds.anim_cmd import run_animate
 import os
 
 def main():
-    parser = argparse.ArgumentParser(prog='pyfx')
+    parser = argparse.ArgumentParser(prog='fluix')
     subparsers = parser.add_subparsers(dest='command')
 
     animate = subparsers.add_parser('animate', help='Create animations (gif/mp4) from images')
@@ -31,7 +31,7 @@ def main():
             folder=folder,
             output_path=args.output,
             fps=args.fps,
-            limit=args.limit,
+            frame_range=args.range,
             quality=args.quality,
             codec=args.codec
         )
