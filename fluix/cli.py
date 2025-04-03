@@ -10,7 +10,7 @@ def main():
     animate.add_argument('--folder', type=str, help='Folder with image frames. If not given, current directory is taken. \n Important!!! Needs the following format :\n pic.0000.png \n pic.0001.png \n pic.0002.png \n ... \n pic.xxxx.png')
     animate.add_argument('--output', type=str, required=True, help='Output file (eg. out.mp4 or out.gif). Also takes the output directory as prefix.')
     animate.add_argument('--fps', type=int, default=30, help='Frames per second. Default is 30')
-    animate.add_argument('--range', type=int, default=None, help='Frame ranges to use, in the form start:end (eg. 20:180)' )
+    animate.add_argument('--range', type=str, default=None, help='Frame ranges to use, in the form start:end (eg. 20:180)' )
     animate.add_argument('--quality', type=int, default=10, help='Render quality (1-10)')
     animate.add_argument('--codec', type=str, default='libx264', help="FFmpeg codec to use (eg. libx264)")
 
@@ -18,10 +18,12 @@ def main():
     frame_range = None
     if args.range:
         try:
-            start_str, end_str = args.range.split(':')
-            frame_range = (int(start_str), int(end_str))
+            start_str, end_str = args.range.split(":")
+            start = int(start_str) if start_str else None
+            end = int(end_str) if end_str else None
+            frame_range = (start, end)
         except ValueError:
-            print("Invalid range format. Use start:end (e.g., 20:240)")
+            print("Invalid format for --range. Use start:end, like 0:400 or :300")
             return
 
     # Animate
@@ -31,7 +33,7 @@ def main():
             folder=folder,
             output_path=args.output,
             fps=args.fps,
-            frame_range=args.range,
+            frame_range=frame_range,
             quality=args.quality,
             codec=args.codec
         )
