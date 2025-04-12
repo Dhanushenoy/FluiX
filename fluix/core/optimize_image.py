@@ -3,13 +3,18 @@ import numpy as np
 from scipy.ndimage import zoom
 import os
 
-import imageio.v3 as iio
-import numpy as np
-from scipy.ndimage import zoom
-import os
+def optimize_image(input_path: str,
+                   output_path: str,
+                   scale: float = 1.0,
+                   grayscale: bool = False,
+                   quality: int = 25,
+                   strip_alpha: bool = False,
+                   quantize = None,
+                   strip_meta: bool = False):
+    """
+    Optimizes the input image
+    """
 
-def optimize_image(input_path, output_path, scale=1.0, grayscale=False, quality=25,
-                   strip_alpha=False, quantize=None, strip_meta=False):
     ext = os.path.splitext(output_path)[-1][1:].lower()
     img = iio.imread(input_path)
 
@@ -31,11 +36,12 @@ def optimize_image(input_path, output_path, scale=1.0, grayscale=False, quality=
 
     # Prepare kwargs before using
     kwargs = {}
-    if ext in ["jpg", "jpeg", "webp"]:
+    img_formats = ["jpg", "jpeg", "webp"]
+    if ext in img_formats:
         kwargs["quality"] = quality
 
     # Set lossy format quality
-    if ext in ["jpg", "jpeg", "webp"]:
+    if ext in img_formats:
         kwargs["quality"] = quality
 
     # I need to add quantize later. May be using Torch?
