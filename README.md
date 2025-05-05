@@ -5,7 +5,7 @@
 # FluiX
 Modular Python utilities for scientific post-processing: plotting, animations, and flow visualization.
 
-# Minimal Dependencies
+## Minimal Dependencies
 
 FluiX is designed to run with minimal to no external dependencies, making it easy to set up, audit, and integrate. It primarily relies on standard Python libraries and avoids heavyweight frameworks or third-party packages unless absolutely necessary.
 
