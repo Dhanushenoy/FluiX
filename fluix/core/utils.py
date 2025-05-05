@@ -1,4 +1,5 @@
 from enum import StrEnum
+import re
 
 class Color(StrEnum):
     # Text Colors
@@ -63,3 +64,16 @@ class msg:
             print("{}{}Error: {}{}".format(TextStyle.BOLD, Color.RED, message, Color.RESET))
         else:
             print("{}{}{}{}".format(TextStyle.BOLD, Color.RED, message, Color.RESET))
+
+def resize_images_to_max_dim(images):
+    pass
+
+def resize_images_to_min_dim(images):
+    pass
+
+def __natural_sort_key(s):
+    # Split the string into chunks of digits and non-digits
+    return [int(text) if text.isdigit() else text.lower() for text in re.split('(\d+)', s)]
+
+def natural_sort(lst):
+    return sorted(lst, key=__natural_sort_key)
