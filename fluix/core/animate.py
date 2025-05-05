@@ -11,14 +11,21 @@ def images_to_video(
     extensions: tuple = ('.png', '.jpg', '.jpeg', '.gif'),
     codec: str = 'libx264',
     quality: int = 10,
-    frame_range: tuple = None
+    frame_range: tuple = None,
+    resize: str = "none"
 ):
+
+    # Handle file extension for OUTPUT
+    try:
+        file_ext = output_path.lower().split(".")[1]
+    except IndexError:
+        msg.error("No extensions given to the output file")
+        exit(0)
+
     image_files = [f for f in os.listdir(input_dir) if f.endswith(extensions)]
 
-    try:
-        image_files = sorted(image_files, key=lambda x: int(x.split('.')[1]))
-    except Exception:
-        image_files.sort()
+    image_files = natural_sort(image_files)
+    print(image_files)
 
     if frame_range:
         start, end = frame_range
