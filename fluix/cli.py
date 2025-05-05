@@ -45,7 +45,7 @@ def main():
 
     args = parser.parse_args()
     if args.command == "animate":
-        from fluix.cmds.anim_cmd import run as run_animate
+        from fluix.cmds.anim_cmd import run_animate
 
         frame_range = None
         if args.range:
