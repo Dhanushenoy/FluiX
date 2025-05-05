@@ -18,7 +18,16 @@ def main():
     animate.add_argument('--range', type=str, default=None, help='Frame ranges to use, in the form start:end (eg. 20:180)' )
     animate.add_argument('--quality', type=int, default=10, help='Render quality (1-10)')
     animate.add_argument('--codec', type=str, default='libx264', help="FFmpeg codec to use (eg. libx264)")
-
+    animate.add_argument('--resize',
+                         type=str,
+                         choices = ["none", "max", "min"],
+                         default="none",
+                         help="Resize all the images to a certain dimension.\n"
+                         "The value can be one of:\n"
+                         "none - input images are untouched\n"
+                         "max - input images are resized to the dimensions of the image having the maximum dimension\n"
+                         "min - input images are resized to the dimensions of the image having the minimum dimension"
+                         )
 
 
     ###############################
