@@ -26,19 +26,31 @@ def images_to_video(
 
     images = [imageio.imread(os.path.join(input_dir, fname)) for fname in image_files]
 
-    if output_path.lower().endswith('.gif'):
-        imageio.mimsave(output_path, images, fps=fps)
-    else:
-        writer = imageio.get_writer(
-            output_path,
-            fps=fps,
-            codec=codec,
-            quality=quality,
-            ffmpeg_log_level='error',
-            pixelformat='yuv420p'
-        )
-        for image in images:
-            writer.append_data(image)
-        writer.close()
+    # Handle resize flag
+
+    match resize:
+        case "min":
+            resize_images_to_min_dim(images) # TODO: Implement the resize to max method
+        case "max":
+            resize_images_to_min_dim(images) # TODO: Implement the resize to min method
+
+    match file_ext:
+        case "gif":
+            imageio.mimsave(output_path, images, fps=fps)
+        case "mp4":
+            writer = imageio.get_writer(
+                output_path,
+                fps=fps,
+                codec=codec,
+                quality=quality,
+                ffmpeg_log_level='error',
+                pixelformat='yuv420p'
+            )
+            for image in images:
+                writer.append_data(image)
+            writer.close()
+        case _:
+            msg.error("The output format should be either gif or mp4")
+            exit(0)
 
     print(f"[FluiX] Saved animation to {output_path}")
