@@ -15,5 +15,6 @@ def run_animate(folder: str,
         fps=fps,
         frame_range=frame_range,
         quality=quality,
-        codec=codec
+        codec=codec,
+        resize=resize
     )
