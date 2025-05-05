@@ -22,7 +22,7 @@ def main():
                          type=str,
                          choices = ["none", "max", "min"],
                          default="none",
-                         help="Resize all the images to a certain dimension.\n"
+                         help="[TODO: This feature is not implemented yet] Resize all the images to a certain dimension.\n"
                          "The value can be one of:\n"
                          "none - input images are untouched\n"
                          "max - input images are resized to the dimensions of the image having the maximum dimension\n"
