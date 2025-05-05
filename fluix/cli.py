@@ -3,7 +3,7 @@ from fluix.cmds.anim_cmd import run_animate
 import os
 
 def main():
-    parser = argparse.ArgumentParser(prog='fluix')
+    parser = argparse.ArgumentParser(prog='fluix', description=" Modular Python utilities for scientific post-processing: plotting, animations, and flow visualization.")
     subparsers = parser.add_subparsers(dest='command',required=True)
 
     ###############################
