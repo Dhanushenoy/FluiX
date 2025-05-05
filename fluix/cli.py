@@ -62,7 +62,8 @@ def main():
             folder=args.folder,
             output_path=args.output,
             fps=args.fps,
-            frame_range=frame_range
+            frame_range=frame_range,
+            resize=args.resize
         )
 
     elif args.command == "optimize":
@@ -75,4 +76,3 @@ def main():
             grayscale=args.gray,
             mode=args.mode
         )
-
