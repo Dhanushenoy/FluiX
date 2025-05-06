@@ -24,9 +24,7 @@ def images_to_video(
         exit(0)
 
     image_files = [f for f in os.listdir(input_dir) if f.endswith(extensions)]
-
     image_files = natural_sort(image_files)
-    print(image_files)
 
     if frame_range:
         start, end = frame_range
