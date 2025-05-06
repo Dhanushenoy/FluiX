@@ -1,5 +1,4 @@
 import argparse
-from fluix.cmds.anim_cmd import run_animate
 import os
 
 def main():
@@ -43,6 +42,18 @@ def main():
     opt.add_argument("--quality", type=int, default=85, help="JPEG/WebP quality (1-100)")
     opt.add_argument("--mode", choices=["hard"], help="Apply aggressive size reduction")
 
+
+    ###############################
+    #
+    #       Make PVD
+    #
+    ###############################
+    makepvd = subparsers.add_parser("makepvd", help="Generate a .pvd file from solution files for ParaView time series")
+    makepvd.add_argument("--pattern", required=False, default="U_*.xyz", help="Glob pattern for solution files, e.g., U_*.xyz")
+    makepvd.add_argument("--output", required=False, default="solution.pvd", help="Output .pvd filename")
+
+
+
     args = parser.parse_args()
     if args.command == "animate":
         from fluix.cmds.anim_cmd import run_animate
@@ -75,4 +86,12 @@ def main():
             scale=args.scale,
             grayscale=args.gray,
             mode=args.mode
+        )
+
+    elif args.command == "makepvd":
+        from fluix.cmds.makepvd_cmd import run_makepvd
+
+        run_makepvd(
+            pattern=args.pattern,
+            output=args.output
         )
